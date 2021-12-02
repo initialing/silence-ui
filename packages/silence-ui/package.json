@@ -1,0 +1,39 @@
+{
+    "name": "silence-ui",
+    "version": "0.0.1",
+    "description": "A UI module of vue 3",
+    "homepage": "",
+    "keywords": [
+        "silence-ui",
+        "ui",
+        "vue",
+        "components library"
+    ],
+    "license": "MIT",
+    "author": "sczheng",
+    "repository": {
+        "type": "git",
+        "url": "git+"
+    },
+    "bugs": {
+        "url": "https://"
+    },
+    "exports": {
+      ".": {
+        "require": "./cjs/index.js",
+        "import": "./es/index.mjs"
+      },
+      "./es": "./es/index.mjs",
+      "./cjs": "./cjs/index.js",
+      "./*": "./*"
+    },
+    "style": "dist/index.css",
+    "main": "cjs/index.js",
+    "module": "es/index.mjs",
+    "peerDependencies": {
+        "vue": "^3.2.20"
+    },
+    "dependencies": {
+        
+    }
+}

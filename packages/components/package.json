@@ -1,0 +1,15 @@
+{
+    "name": "@silence-ui/components",
+    "version": "0.0.1",
+    "description": "the silence-ui's components",
+    "author": "sczheng",
+    "peerDependencies": {
+        "vue": "^3.2.20"
+    },
+    "main": "index.ts",
+    "module": "index.ts",
+    "types": "index.d.ts",
+    "unpkg": "index.js",
+    "jsdelivr": "index.js",
+    "sideEffects": false
+}

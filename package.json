@@ -1,0 +1,52 @@
+{
+    "private": true,
+    "scripts": {
+        "preinstall": "node ./scripts/preinstall.js",
+        "build": "gulp -f build/gulpfile.ts",
+        "show": "pnpm -C show dev",
+        "build:scss": "gulp -f packages/style/gulpfile.ts"
+    },
+    "engines": {
+        "node": ">= 16"
+    },
+    "workspaces": [
+        "packages/**"
+    ],
+    "dependencies": {
+        "@silence-ui/components": "workspace:*",
+        "@silence-ui/style": "workspace:*"
+    },
+    "devDependencies": {
+        "@pnpm/find-workspace-packages": "^3.1.26",
+        "@pnpm/logger": "^4.0.0",
+        "@pnpm/types": "^7.6.0",
+        "@rollup/plugin-commonjs": "^21.0.1",
+        "@rollup/plugin-node-resolve": "^13.0.6",
+        "@rollup/plugin-replace": "^3.0.0",
+        "@types/gulp": "^4.0.9",
+        "@types/node": "^16.11.10",
+        "@types/sass": "^1.43.1",
+        "@types/undertaker": "^1.2.7",
+        "@vue/compiler-sfc": "^3.2.23",
+        "chalk": "^4.1.2",
+        "esbuild": "^0.13.15",
+        "execa": "5.1.1",
+        "fast-glob": "^3.2.7",
+        "gulp": "^4.0.2",
+        "gulp-typescript": "^6.0.0-alpha.1",
+        "rollup": "^2.60.2",
+        "rollup-plugin-css-only": "^3.1.0",
+        "rollup-plugin-esbuild": "^4.7.2",
+        "rollup-plugin-filesize": "^9.1.1",
+        "rollup-plugin-vue": "^6.0.0",
+        "sass": "^1.44.0",
+        "ts-morph": "^13.0.2",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.2",
+        "vue": "^3.2.22",
+        "vue-tsc": "^0.29.6"
+    },
+    "peerDependencies": {
+        "vue": "^3.2.20"
+    }
+}

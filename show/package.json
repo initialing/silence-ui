@@ -1,0 +1,16 @@
+{
+    "name": "@silence-ui/show",
+    "description": "a develop show for silence ui",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "@silence-ui/components": "0.0.1"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "1.9.4",
+        "vite": "2.6.14"
+    }
+}
