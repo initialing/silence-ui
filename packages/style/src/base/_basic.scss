@@ -1,0 +1,18 @@
+@import "./color.scss";
+
+%si-border {
+    border-color: $si_border_color;
+}
+
+%si-active-border {
+    border-color: $si_active_color;
+}
+
+%si-background {
+    background-color: $si_bg_color;
+}
+
+%si-basic-font {
+    font-size: 14px;
+    color: $si_font_color;
+}

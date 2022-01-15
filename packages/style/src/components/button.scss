@@ -1,5 +1,23 @@
-@import "../base/color";
+@import "../base/basic";
 
-.si-btn{
-    background-color: $bt_bg_color;
+
+%si-btn-basic {
+    box-sizing: border-box;
+    padding: 6px 18px 6px 18px;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.si-btn {
+    @extend %si-background;
+    @extend %si-border;
+    @extend %si-btn-basic;
+    @extend %si-basic-font;
+}
+.si-btn:hover {
+    color: $si_active_color;
+    @extend %si-active-border;
 }

@@ -1,1 +1,1 @@
-export * from "@silence-ui/components"
+export * from "@silence-ui/components";

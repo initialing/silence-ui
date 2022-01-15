@@ -1,6 +1,6 @@
 declare module "vue" {
     export interface GlobalComponents {
-        SiButton: typeof import("silence-ui")["SiButton"];
+        SiButton: typeof import("@silence-ui/components")["SiButton"];
     }
 }
 

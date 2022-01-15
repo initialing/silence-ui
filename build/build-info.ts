@@ -1,19 +1,19 @@
-import { resolve } from "path"
-import { siPath } from "../path/path"
+import { resolve } from "path";
+import { siPath } from "../path/path";
 
 export type Module = "cjs" | "esm";
 
-interface Info  {
-    module: "ESNext" | "commonjs",
-    format: "esm" | "cjs",
-    ext: "mjs" | "js",
+interface Info {
+    module: "ESNext" | "commonjs";
+    format: "esm" | "cjs";
+    ext: "mjs" | "js";
     output: {
-        name: string,
-        path: string
-    },
+        name: string;
+        path: string;
+    };
     bundle: {
-        path: string
-    }
+        path: string;
+    };
 }
 
 export const buildConfig: Record<Module, Info> = {
@@ -23,11 +23,11 @@ export const buildConfig: Record<Module, Info> = {
         ext: "mjs",
         output: {
             name: "es",
-            path: resolve(siPath, "es")
+            path: resolve(siPath, "es"),
         },
         bundle: {
-            path: "silence-ui/es"
-        }
+            path: "silence-ui/es",
+        },
     },
     cjs: {
         module: "commonjs",
@@ -35,16 +35,16 @@ export const buildConfig: Record<Module, Info> = {
         ext: "js",
         output: {
             name: "cjs",
-            path: resolve(siPath, "cjs")
+            path: resolve(siPath, "cjs"),
         },
         bundle: {
-            path: "silence-ui/cjs"
-        }
-    }
-}
+            path: "silence-ui/cjs",
+        },
+    },
+};
 
 export const buildConfigEntries = Object.entries(
     buildConfig
-) as BuildConfigEntries
+) as BuildConfigEntries;
 
-export type BuildConfigEntries = [Module, Info][]
+export type BuildConfigEntries = [Module, Info][];
