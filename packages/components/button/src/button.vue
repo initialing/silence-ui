@@ -1,11 +1,16 @@
 <template>
-    <button class="si-btn" :type="type" @click="btnClick">
+    <button
+        :class="['si-btn', `si-btn-${insideTheme}`]"
+        :type="type"
+        @click="HandleClick"
+    >
         <slot></slot>
     </button>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, computed, toRef } from "vue";
+import type { ComputedRef } from "vue";
 
 export default defineComponent({
     name: "SiButton",
@@ -20,14 +25,45 @@ export default defineComponent({
                 val === "reset" ||
                 val === undefined,
         },
+        theme: {
+            require: false,
+            type: String as PropType<"" | "default" | "danger" | undefined>,
+            default: "",
+            validator: (val: unknown) =>
+                val === "" ||
+                val === "default" ||
+                val === "danger" ||
+                val === undefined,
+        },
     },
-    emits: ["click"],
+    emits: {
+        click: (evt: MouseEvent) => {
+            return !!evt;
+        },
+    },
     setup(props, { emit }) {
-        const btnClick = () => {
-            emit("click");
+        const theme = toRef(props, "theme");
+        const insideTheme: ComputedRef<string> = computed((): string => {
+            let temp: string;
+            switch (theme.value) {
+                case "danger": {
+                    temp = "danger";
+                    break;
+                }
+                default: {
+                    temp = "default";
+                    break;
+                }
+            }
+            return temp;
+        });
+
+        const HandleClick = (evt: MouseEvent) => {
+            emit("click", evt);
         };
         return {
-            btnClick,
+            HandleClick,
+            insideTheme,
         };
     },
 });

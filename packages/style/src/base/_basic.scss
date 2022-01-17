@@ -1,5 +1,9 @@
 @import "./color.scss";
 
+%si-basic-font-size {
+    font-size: 14px;
+}
+
 %si-border {
     border-color: $si_border_color;
 }
@@ -8,11 +12,25 @@
     border-color: $si_active_color;
 }
 
+%si-border-basic {
+    border-width: 1px;
+    border-style: solid;
+}
+
 %si-background {
     background-color: $si_bg_color;
 }
 
 %si-basic-font {
-    font-size: 14px;
+    @extend %si-basic-font-size;
     color: $si_font_color;
+}
+
+%si-danger-border {
+    border-color: $si_danger_color;
+}
+
+%si-danger-font {
+    @extend %si-basic-font-size;
+    color: $si_danger_color;
 }
