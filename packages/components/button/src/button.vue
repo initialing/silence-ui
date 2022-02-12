@@ -2,6 +2,7 @@
     <button
         :class="['si-btn', `si-btn-${insideTheme}`]"
         :type="type"
+        :disabled="disabled"
         @click="HandleClick"
     >
         <slot></slot>
@@ -34,6 +35,12 @@ export default defineComponent({
                 val === "default" ||
                 val === "danger" ||
                 val === undefined,
+        },
+        disabled: {
+            require: false,
+            type: Boolean,
+            deafult: false,
+            validator: (val: unknown) => typeof val === "boolean",
         },
     },
     emits: {

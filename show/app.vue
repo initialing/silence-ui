@@ -5,7 +5,12 @@
             <SiButton type="button" @click="btnClick(2, $event)">{{
                 btname
             }}</SiButton>
-            <SiButton theme="danger">danger</SiButton>
+            <SiButton
+                theme="danger"
+                :disabled="true"
+                @click="btnClick(2, $event)"
+                >danger</SiButton
+            >
         </div>
         <p>input</p>
         <div class="show">
