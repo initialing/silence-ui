@@ -32,3 +32,14 @@
         background-color: $si_btn_danger_hover_background;
     }
 }
+.si-btn.si-btn-disabled {
+    @extend %si-basic-disabled;
+    opacity: .7;
+}
+.si-btn:hover.si-btn-disabled:hover {
+    background-color: $si_bg_color;
+}
+.si-btn-default:hover.si-btn-disabled:hover {
+    @extend %si-basic-font;
+    @extend %si-border;
+}

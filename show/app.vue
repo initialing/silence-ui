@@ -17,6 +17,7 @@
             <SiInput
                 v-model="inputVal"
                 type="text"
+                :disabled="true"
                 @focus="inputFocus"
                 @blur="inputBlur"
                 @change="inputChange"

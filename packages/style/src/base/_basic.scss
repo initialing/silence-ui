@@ -34,3 +34,7 @@
     @extend %si-basic-font-size;
     color: $si_danger_color;
 }
+
+%si-basic-disabled {
+    cursor: not-allowed;
+}

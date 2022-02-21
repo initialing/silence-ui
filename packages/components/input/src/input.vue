@@ -1,10 +1,14 @@
 <template>
-    <div :class="['si-input']">
+    <div :class="['si-input', { 'si-input-disabled': disabled }]">
         <input
             :value="modelValue"
-            :class="['si-input__input']"
+            :class="[
+                'si-input__input',
+                { 'si-input-disabled__input': disabled },
+            ]"
             :type="type"
             :placeholder="placeholder"
+            :disabled="disabled"
             @input="handleInput"
             @focus="handleFocus"
             @blur="handleBlur"
@@ -35,6 +39,12 @@ export default defineComponent({
             required: false,
             type: String,
             default: "请输入内容",
+        },
+        disabled: {
+            require: false,
+            type: Boolean,
+            default: false,
+            validator: (val: unknown) => typeof val === "boolean",
         },
     },
     emits: {

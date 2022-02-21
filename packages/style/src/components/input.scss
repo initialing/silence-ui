@@ -27,3 +27,10 @@
         @extend %si-active-border;
     }
 }
+.si-input__input.si-input-disabled__input{
+    cursor: not-allowed;
+    opacity: .7;
+}
+.si-input__input:hover.si-input-disabled__input:hover,.si-input__input:focus.si-input-disabled__input:focus{
+    @extend %si-border;
+}

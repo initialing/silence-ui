@@ -1,6 +1,10 @@
 <template>
     <button
-        :class="['si-btn', `si-btn-${insideTheme}`]"
+        :class="[
+            'si-btn',
+            `si-btn-${insideTheme}`,
+            { 'si-btn-disabled': disabled },
+        ]"
         :type="type"
         :disabled="disabled"
         @click="HandleClick"
