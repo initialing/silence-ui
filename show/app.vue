@@ -1,16 +1,62 @@
 <template>
-    <div>
-        hello silence
-        <SiButton>test</SiButton>
-    </div>
+    <article>
+        <p>button</p>
+        <div class="show">
+            <SiButton type="button" @click="btnClick(2, $event)">{{
+                btname
+            }}</SiButton>
+            <SiButton
+                theme="danger"
+                :disabled="true"
+                @click="btnClick(2, $event)"
+                >danger</SiButton
+            >
+        </div>
+        <p>input</p>
+        <div class="show">
+            <SiInput
+                v-model="inputVal"
+                type="text"
+                :disabled="true"
+                @focus="inputFocus"
+                @blur="inputBlur"
+                @change="inputChange"
+                @input="inputInput"
+            ></SiInput>
+        </div>
+    </article>
 </template>
 
-<script lang="ts">
-export default {
-    
-}
+<script lang="ts" setup>
+import { onMounted, Ref, ref } from "vue";
+let btname: Ref<string> = ref("");
+let inputVal: Ref<string> = ref("");
+const btnClick = (num: number, evt: MouseEvent) => {
+    console.log("click ==>", evt.currentTarget);
+};
+const inputFocus = ($ev) => {
+    console.log("focus", $ev);
+};
+const inputBlur = () => {
+    console.log("blur", inputVal.value);
+};
+const inputChange = (val) => {
+    console.log("change", val);
+};
+const inputInput = (val) => {
+    console.log("input", val);
+};
+onMounted((): void => {
+    btname.value = "default";
+});
 </script>
 
 <style scoped>
-
+.show {
+    width: 100%;
+    display: flex;
+}
+.si-btn {
+    margin-right: 10px;
+}
 </style>

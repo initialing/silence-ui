@@ -1,12 +1,10 @@
-import { createApp } from "vue"
-import App from "./app.vue"
-import { SiButton } from "@silence-ui/components";
+import { createApp } from "vue";
+import App from "./app.vue";
+import { SiButton, SiInput } from "@silence-ui/components";
 
-import "@silence-ui/style/src/index.scss"
+import "@silence-ui/style/src/index.scss";
 
-
-
-
-let app = createApp(App);
+const app = createApp(App);
 app.use(SiButton);
+app.use(SiInput);
 app.mount("#sishow");

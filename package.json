@@ -14,7 +14,9 @@
     ],
     "dependencies": {
         "@silence-ui/components": "workspace:*",
-        "@silence-ui/style": "workspace:*"
+        "@silence-ui/style": "workspace:*",
+        "@silence-ui/utils": "workspace:*",
+        "silence-ui": "^0.0.1"
     },
     "devDependencies": {
         "@pnpm/find-workspace-packages": "^3.1.26",
@@ -27,13 +29,20 @@
         "@types/node": "^16.11.10",
         "@types/sass": "^1.43.1",
         "@types/undertaker": "^1.2.7",
+        "@typescript-eslint/eslint-plugin": "^5.8.1",
+        "@typescript-eslint/parser": "^5.8.1",
         "@vue/compiler-sfc": "^3.2.23",
         "chalk": "^4.1.2",
         "esbuild": "^0.13.15",
+        "eslint": "^8.6.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-vue": "^8.2.0",
         "execa": "5.1.1",
         "fast-glob": "^3.2.7",
         "gulp": "^4.0.2",
         "gulp-typescript": "^6.0.0-alpha.1",
+        "prettier": "^2.5.1",
         "rollup": "^2.60.2",
         "rollup-plugin-css-only": "^3.1.0",
         "rollup-plugin-esbuild": "^4.7.2",

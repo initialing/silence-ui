@@ -1,5 +1,45 @@
-@import "../base/color";
+@import "../base/basic";
 
-.si-btn{
-    background-color: $bt_bg_color;
+
+%si-btn-basic {
+    @extend %si-border-basic;
+    min-width: 80px;
+    height: 32px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 6px 18px 6px 18px;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.si-btn {
+    @extend %si-background;
+    @extend %si-btn-basic;
+    &-default {
+        @extend %si-basic-font;
+        @extend %si-border;
+    }
+    &-default:hover {
+        color: $si_active_color;
+        @extend %si-active-border;
+    }
+    &-danger {
+        @extend %si-danger-border;
+        @extend %si-danger-font;
+    }
+    &-danger:hover {
+        background-color: $si_btn_danger_hover_background;
+    }
+}
+.si-btn.si-btn-disabled {
+    @extend %si-basic-disabled;
+    opacity: .7;
+}
+.si-btn:hover.si-btn-disabled:hover {
+    background-color: $si_bg_color;
+}
+.si-btn-default:hover.si-btn-disabled:hover {
+    @extend %si-basic-font;
+    @extend %si-border;
 }

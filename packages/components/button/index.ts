@@ -1,10 +1,9 @@
-import Button from "./src/button.vue"
-import { App } from "vue"
+import Button from "./src/button.vue";
+import { AddInstall } from "@silence-ui/utils/common/addInstall";
+import type { App } from "vue";
 
-export const SiButton = {
-    install: (app: App, config: Object)=>{
-        app.component("SiButton", Button);
-    }
-}
+export const SiButton = AddInstall(Button, (app: App) => {
+    app.component("SiButton", Button);
+});
 
-export default SiButton
+export default SiButton;
