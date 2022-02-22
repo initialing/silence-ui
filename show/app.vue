@@ -24,6 +24,9 @@
                 @input="inputInput"
             ></SiInput>
         </div>
+        <div>
+            <SiCarousel></SiCarousel>
+        </div>
     </article>
 </template>
 
