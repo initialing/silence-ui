@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div class="si-carousel-item"><slot></slot></div>
 </template>
 
 <script lang="ts">
