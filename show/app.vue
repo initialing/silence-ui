@@ -24,6 +24,22 @@
                 @input="inputInput"
             ></SiInput>
         </div>
+        <div style="margin-top: 20px">
+            <SiCarousel>
+                <SiCarouselItem
+                    ><div class="carousel" style="background-color: aqua"></div
+                ></SiCarouselItem>
+                <SiCarouselItem
+                    ><div
+                        class="carousel"
+                        style="background-color: yellow"
+                    ></div
+                ></SiCarouselItem>
+                <SiCarouselItem
+                    ><div class="carousel" style="background-color: brown"></div
+                ></SiCarouselItem>
+            </SiCarousel>
+        </div>
     </article>
 </template>
 
@@ -51,12 +67,19 @@ onMounted((): void => {
 });
 </script>
 
-<style scoped>
+<style>
+body {
+    margin: 0px;
+}
 .show {
     width: 100%;
     display: flex;
 }
 .si-btn {
     margin-right: 10px;
+}
+.carousel {
+    width: 100%;
+    height: 100%;
 }
 </style>
