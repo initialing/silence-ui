@@ -5,6 +5,8 @@ import {
     SiCarousel,
     SiCarouselItem,
     SiInput,
+    SiRadio,
+    SiRadioGroup,
 } from "@silence-ui/components";
 
 import "@silence-ui/style/src/index.scss";
@@ -14,4 +16,6 @@ app.use(SiButton);
 app.use(SiCarousel);
 app.use(SiCarouselItem);
 app.use(SiInput);
+app.use(SiRadio);
+app.use(SiRadioGroup);
 app.mount("#sishow");

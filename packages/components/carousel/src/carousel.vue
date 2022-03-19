@@ -12,14 +12,7 @@
 <script lang="ts">
 import { checkPixelString } from "@silence-ui/utils/common/propValidators";
 import { generateId } from "@silence-ui/utils/common/generator";
-import {
-    defineComponent,
-    onBeforeMount,
-    onMounted,
-    PropType,
-    ref,
-    toRef,
-} from "vue";
+import { defineComponent, onMounted, PropType, ref, readonly } from "vue";
 import type { Ref } from "vue";
 
 export default defineComponent({
@@ -50,10 +43,9 @@ export default defineComponent({
                 val === "column-reverse",
         },
     },
-    setup(props) {
-        const carouselId: Ref<number> = ref(generateId());
+    setup() {
+        const carouselId: Ref<number> = readonly(ref(generateId()));
         const boxWidth: Ref<number> = ref(0);
-        const boxHeight: Ref<number> = ref(0);
         onMounted(() => {
             const carousel: HTMLElement = document.getElementsByClassName(
                 `si-carousel-${carouselId.value}`

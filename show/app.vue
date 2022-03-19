@@ -24,6 +24,12 @@
                 @input="inputInput"
             ></SiInput>
         </div>
+        <div class="show">
+            <SiRadioGroup>
+                <SiRadio :value="1">choice 1</SiRadio>
+                <SiRadio :value="2">choice 2</SiRadio>
+            </SiRadioGroup>
+        </div>
         <div style="margin-top: 20px">
             <SiCarousel>
                 <SiCarouselItem
