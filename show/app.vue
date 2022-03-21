@@ -26,8 +26,8 @@
         </div>
         <div class="show">
             <SiRadioGroup>
-                <SiRadio :value="1">choice 1</SiRadio>
-                <SiRadio :value="2">choice 2</SiRadio>
+                <SiRadio v-model="radioVal" label="1">choice 1</SiRadio>
+                <SiRadio v-model="radioVal" label="2">choice 2</SiRadio>
             </SiRadioGroup>
         </div>
         <div style="margin-top: 20px">
@@ -53,6 +53,7 @@
 import { onMounted, Ref, ref } from "vue";
 let btname: Ref<string> = ref("");
 let inputVal: Ref<string> = ref("");
+let radioVal: Ref<string> = ref("1");
 const btnClick = (num: number, evt: MouseEvent) => {
     console.log("click ==>", evt.currentTarget);
 };

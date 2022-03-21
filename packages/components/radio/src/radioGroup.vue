@@ -1,5 +1,5 @@
 <template>
-    <div :id="`si-radiogroup__${id}`">
+    <div>
         <slot></slot>
     </div>
 </template>
