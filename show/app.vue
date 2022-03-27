@@ -25,9 +25,9 @@
             ></SiInput>
         </div>
         <div class="show">
-            <SiRadioGroup>
-                <SiRadio v-model="radioVal" label="1">choice 1</SiRadio>
-                <SiRadio v-model="radioVal" label="2">choice 2</SiRadio>
+            <SiRadioGroup v-model="radioVal">
+                <SiRadio class="radio" label="1">choice 1</SiRadio>
+                <SiRadio class="radio" label="2">choice 2</SiRadio>
             </SiRadioGroup>
         </div>
         <div style="margin-top: 20px">
@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, Ref, ref } from "vue";
+import { onMounted, Ref, ref, watch } from "vue";
 let btname: Ref<string> = ref("");
 let inputVal: Ref<string> = ref("");
 let radioVal: Ref<string> = ref("1");
@@ -69,6 +69,9 @@ const inputChange = (val) => {
 const inputInput = (val) => {
     console.log("input", val);
 };
+watch(radioVal, (val) => {
+    console.log("radio", val);
+});
 onMounted((): void => {
     btname.value = "default";
 });
@@ -88,5 +91,8 @@ body {
 .carousel {
     width: 100%;
     height: 100%;
+}
+.radio {
+    margin-left: 10px;
 }
 </style>
