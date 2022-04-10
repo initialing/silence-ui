@@ -30,6 +30,16 @@
                 <SiRadio class="radio" label="2">choice 2</SiRadio>
             </SiRadioGroup>
         </div>
+        <div class="show">
+            <SiCheckboxGroup>
+                <SiCheckbox v-model="check1" class="radio" label="1"
+                    >check 1</SiCheckbox
+                >
+                <SiCheckbox v-model="check2" class="radio" label="2"
+                    >check 2</SiCheckbox
+                >
+            </SiCheckboxGroup>
+        </div>
         <div style="margin-top: 20px">
             <SiCarousel>
                 <SiCarouselItem
@@ -54,6 +64,8 @@ import { onMounted, Ref, ref, watch } from "vue";
 let btname: Ref<string> = ref("");
 let inputVal: Ref<string> = ref("");
 let radioVal: Ref<string> = ref("1");
+let check1: Ref<boolean> = ref(false);
+let check2: Ref<boolean> = ref(false);
 const btnClick = (num: number, evt: MouseEvent) => {
     console.log("click ==>", evt.currentTarget);
 };

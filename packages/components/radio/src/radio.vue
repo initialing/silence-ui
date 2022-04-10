@@ -5,7 +5,7 @@
         role="radio"
         tabindex="0"
         :aria-checked="value === label"
-        @click="handleInput"
+        @click.prevent="handleInput"
     >
         <span
             class="si-radio__inner"
