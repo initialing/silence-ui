@@ -4,6 +4,8 @@ import {
     SiButton,
     SiCarousel,
     SiCarouselItem,
+    SiCheckbox,
+    SiCheckboxGroup,
     SiInput,
     SiRadio,
     SiRadioGroup,
@@ -15,6 +17,8 @@ const app = createApp(App);
 app.use(SiButton);
 app.use(SiCarousel);
 app.use(SiCarouselItem);
+app.use(SiCheckbox);
+app.use(SiCheckboxGroup);
 app.use(SiInput);
 app.use(SiRadio);
 app.use(SiRadioGroup);

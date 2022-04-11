@@ -22,11 +22,11 @@ export default defineComponent({
     },
     setup(props, { emit }) {
         const { modelValue } = toRefs(props);
-        const updateModel = (val) => {
+        const updateRadioModel = (val) => {
             emit("update:modelValue", val);
         };
-        provide("groupModel", modelValue);
-        provide("updateModel", updateModel);
+        provide("groupRadioModel", modelValue);
+        provide("updateRadioModel", updateRadioModel);
 
         return {};
     },
