@@ -27,7 +27,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, toRefs } from "vue";
+import { defineComponent, ref, watch, toRefs, inject } from "vue";
+import type { Ref } from "vue";
+import { basicFunc } from "@silence-ui/utils/types/commonType";
 
 export default defineComponent({
     name: "SiCheckbox",
@@ -35,7 +37,7 @@ export default defineComponent({
         modelValue: {
             require: false,
             type: Boolean,
-            default: false,
+            default: null,
         },
         label: {
             require: true,
@@ -50,15 +52,40 @@ export default defineComponent({
     },
     setup(props, { emit }) {
         const value = ref();
+        const groupCheckboxModel: Ref<Array<unknown>> = inject(
+            "groupCheckboxModel"
+        ) as Ref;
+        const updateCheckboxModel = inject("updateCheckboxModel") as basicFunc;
+        const checkboxSet = new Set();
         const checkboxInput = ref(null);
         const { modelValue } = toRefs(props);
-        watch(modelValue, (newVal) => {
-            (checkboxInput.value as unknown as HTMLInputElement).checked =
-                newVal;
-            value.value = newVal;
-        });
+        const { label } = toRefs(props);
+        if (modelValue.value !== null) {
+            value.value = modelValue.value;
+            watch(modelValue, (newVal) => {
+                (checkboxInput.value as unknown as HTMLInputElement).checked =
+                    newVal;
+                value.value = newVal;
+            });
+        } else if (groupCheckboxModel.value) {
+            groupCheckboxModel.value.forEach((item) => checkboxSet.add(item));
+            value.value = checkboxSet.has(label.value);
+            watch(groupCheckboxModel, (newVal: Array<unknown>) => {
+                checkboxSet.clear();
+                newVal.forEach((item) => checkboxSet.add(item));
+                (checkboxInput.value as unknown as HTMLInputElement).checked =
+                    checkboxSet.has(label.value);
+                value.value = checkboxSet.has(label.value);
+            });
+        }
         const handleInput = () => {
             emit("update:modelValue", !value.value);
+            if (value.value) {
+                checkboxSet.delete(label.value);
+            } else {
+                checkboxSet.add(label.value);
+            }
+            updateCheckboxModel(checkboxSet);
         };
         return {
             value,

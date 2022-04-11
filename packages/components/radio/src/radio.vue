@@ -38,7 +38,7 @@ export default defineComponent({
         modelValue: {
             require: false,
             type: [String, Boolean, Number],
-            default: "",
+            default: null,
         },
         label: {
             require: true,
@@ -53,13 +53,13 @@ export default defineComponent({
     },
     setup(props, { emit }) {
         const value = ref();
-        const groupModel: Ref = inject("groupModel") as Ref;
-        const updateModel = inject("updateModel") as basicFunc;
+        const groupRadioModel: Ref = inject("groupRadioModel") as Ref;
+        const updateRadioModel = inject("updateRadioModel") as basicFunc;
         const radioInput = ref(null);
         const { modelValue } = toRefs(props);
-        if (groupModel.value !== "") {
-            value.value = groupModel.value;
-            watch(groupModel, (newVal) => {
+        if (groupRadioModel.value !== "") {
+            value.value = groupRadioModel.value;
+            watch(groupRadioModel, (newVal) => {
                 (radioInput.value as unknown as HTMLInputElement).checked =
                     newVal === props.label;
                 value.value = newVal;
@@ -74,7 +74,7 @@ export default defineComponent({
         }
         const handleInput = () => {
             emit("update:modelValue", props.label);
-            updateModel(props.label);
+            updateRadioModel(props.label);
         };
         return {
             value,

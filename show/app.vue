@@ -31,13 +31,9 @@
             </SiRadioGroup>
         </div>
         <div class="show">
-            <SiCheckboxGroup>
-                <SiCheckbox v-model="check1" class="radio" label="1"
-                    >check 1</SiCheckbox
-                >
-                <SiCheckbox v-model="check2" class="radio" label="2"
-                    >check 2</SiCheckbox
-                >
+            <SiCheckboxGroup v-model="check" @click="clickCb">
+                <SiCheckbox class="radio" label="1">check 1</SiCheckbox>
+                <SiCheckbox class="radio" label="2">check 2</SiCheckbox>
             </SiCheckboxGroup>
         </div>
         <div style="margin-top: 20px">
@@ -60,12 +56,13 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, Ref, ref, watch } from "vue";
+import { onMounted, Ref, ref, watch, toRefs } from "vue";
 let btname: Ref<string> = ref("");
 let inputVal: Ref<string> = ref("");
 let radioVal: Ref<string> = ref("1");
 let check1: Ref<boolean> = ref(false);
 let check2: Ref<boolean> = ref(false);
+let check: Ref<Array<unknown>> = ref(["1"]);
 const btnClick = (num: number, evt: MouseEvent) => {
     console.log("click ==>", evt.currentTarget);
 };
@@ -81,8 +78,21 @@ const inputChange = (val) => {
 const inputInput = (val) => {
     console.log("input", val);
 };
+console.log("check", check);
+const clickCb = (val) => {
+    console.log("clickCb", val);
+    console.log("check", check.value);
+};
 watch(radioVal, (val) => {
     console.log("radio", val);
+});
+watch(check1, (val) => {
+    console.log("check1", val);
+    console.log("check2", check2.value);
+    console.log("check", check.value);
+});
+watch(check, (val) => {
+    console.log("check", val);
 });
 onMounted((): void => {
     btname.value = "default";
