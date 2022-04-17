@@ -1,0 +1,29 @@
+@import "../base/basic";
+@import "../base/color";
+
+.si-tag {
+    @extend %si-border-basic;
+    @extend %si-active-border;
+    @extend %si-basic-font-size;
+    @extend %si-border-fullradius;
+    @extend %si-basic-font-size;
+    @extend %si-basic-pointer;
+    min-width: 50px;
+    height: 28px;
+    display: inline-block;
+    font-weight: 400;
+    padding: 5px 18px 5px 18px;
+    box-sizing: border-box;
+    position: relative;
+    color: $si_active_color;
+    &-close {
+        position: absolute;
+        right: 8px;
+        color: $si_danger_color;
+        top: 4px;
+        &::after {
+            content: 'x';
+            font-weight: 100;
+        }
+    }
+}

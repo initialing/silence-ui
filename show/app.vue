@@ -36,6 +36,19 @@
                 <SiCheckbox class="radio" label="2">check 2</SiCheckbox>
             </SiCheckboxGroup>
         </div>
+        <div class="show">
+            <SiFreeSelector v-model="fsmodel" :selections="fsoptions">
+                <template #tags="tagProp"
+                    ><SiTag
+                        :value="tagProp.item.key"
+                        :label="tagProp.item.name"
+                    ></SiTag
+                ></template>
+                <template #options="optionProp"
+                    ><SiOption>{{ optionProp.item.name }}</SiOption></template
+                >
+            </SiFreeSelector>
+        </div>
         <div style="margin-top: 20px">
             <SiCarousel>
                 <SiCarouselItem
@@ -63,6 +76,18 @@ let radioVal: Ref<string> = ref("1");
 let check1: Ref<boolean> = ref(false);
 let check2: Ref<boolean> = ref(false);
 let check: Ref<Array<unknown>> = ref(["1"]);
+let fsmodel: Ref<Array<unknown>> = ref([]);
+let fsoptions: Ref<Array<unknown>> = ref([]);
+fsmodel.value = [
+    { key: 1, name: "A" },
+    { key: 2, name: "B" },
+];
+fsoptions.value = [
+    { key: 1, name: "A" },
+    { key: 2, name: "B" },
+    { key: 3, name: "C" },
+    { key: 4, name: "D" },
+];
 const btnClick = (num: number, evt: MouseEvent) => {
     console.log("click ==>", evt.currentTarget);
 };

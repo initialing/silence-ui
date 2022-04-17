@@ -5,9 +5,12 @@ declare module "vue" {
         SiCarouselItem: typeof import("silence-ui")["SiCarouselItem"];
         SiCheckbox: typeof import("silence-ui")["SiCheckbox"];
         SiCheckboxGroup: typeof import("silence-ui")["SiCheckboxGroup"];
+        SiFreeSelector: typeof import("silence-ui")["SiFreeSelector"];
         SiInput: typeof import("silence-ui")["SiInput"];
+        SiOption: typeof import("silence-ui")["SiOption"];
         SiRadio: typeof import("silence-ui")["SiRadio"];
         SiRadioGroup: typeof import("silence-ui")["SiRadioGroup"];
+        SiTag: typeof import("silence-ui")["SiTag"];
     }
 }
 
