@@ -24,18 +24,21 @@
                 @input="inputInput"
             ></SiInput>
         </div>
+        <p>radio</p>
         <div class="show">
             <SiRadioGroup v-model="radioVal">
                 <SiRadio class="radio" label="1">choice 1</SiRadio>
                 <SiRadio class="radio" label="2">choice 2</SiRadio>
             </SiRadioGroup>
         </div>
+        <p>checkbox</p>
         <div class="show">
             <SiCheckboxGroup v-model="check" @click="clickCb">
                 <SiCheckbox class="radio" label="1">check 1</SiCheckbox>
                 <SiCheckbox class="radio" label="2">check 2</SiCheckbox>
             </SiCheckboxGroup>
         </div>
+        <p>free selector</p>
         <div class="show">
             <SiFreeSelector v-model="fsmodel" :selections="fsoptions">
                 <template #tags="tagProp"
@@ -49,7 +52,7 @@
                 >
             </SiFreeSelector>
         </div>
-        <div style="margin-top: 20px">
+        <!-- <div style="margin-top: 20px">
             <SiCarousel>
                 <SiCarouselItem
                     ><div class="carousel" style="background-color: aqua"></div
@@ -64,7 +67,7 @@
                     ><div class="carousel" style="background-color: brown"></div
                 ></SiCarouselItem>
             </SiCarousel>
-        </div>
+        </div> -->
     </article>
 </template>
 
@@ -131,6 +134,7 @@ body {
 .show {
     width: 100%;
     display: flex;
+    padding-left: 30px;
 }
 .si-btn {
     margin-right: 10px;

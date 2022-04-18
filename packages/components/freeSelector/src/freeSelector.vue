@@ -1,5 +1,5 @@
 <template>
-    <div class="si-freeselector">
+    <div :id="`si-freeselector-${selectorId}`" class="si-freeselector">
         <div class="si-freeselector-head">
             <label
                 v-for="(tag, index) in modelValue"
@@ -14,9 +14,16 @@
             />
         </div>
         <teleport to="body">
-            <div class="si-freeselector-choosepanel">
-                <ul>
-                    <li v-for="(item, index) in selections" :key="index">
+            <div
+                :id="`si-panel-${panelId}`"
+                class="si-freeselector-choosepanel"
+            >
+                <ul class="si-freeselector-choosepanel__list">
+                    <li
+                        v-for="(item, index) in selections"
+                        :key="index"
+                        class="si-freeselector-choosepanel__item"
+                    >
                         <slot name="options" :item="item" :index="index"></slot>
                     </li>
                 </ul>
@@ -26,7 +33,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
+import type { Ref } from "vue";
+import { generateId } from "@silence-ui/utils/common/generator";
 
 export default defineComponent({
     name: "SiFreeSelector",
@@ -51,6 +60,29 @@ export default defineComponent({
         "update:modelValue": (val: Array<unknown>) => {
             return true || val;
         },
+    },
+    setup() {
+        const panelId: Ref<number> = ref(generateId());
+        const selectorId: Ref<number> = ref(generateId());
+        onMounted(() => {
+            const selector: HTMLElement = document.getElementById(
+                `si-freeselector-${selectorId.value}`
+            ) as HTMLElement;
+            const panel: HTMLElement = document.getElementById(
+                `si-panel-${panelId.value}`
+            ) as HTMLElement;
+            const selectorWidth = selector.clientWidth;
+            const selectorHeight = selector.clientHeight;
+            const selectorX = selector.offsetLeft;
+            const selectorY = selector.offsetTop;
+            panel.style.width = selectorWidth + "px";
+            panel.style.top = selectorHeight + selectorY + 10 + "px";
+            panel.style.left = selectorX + "px";
+        });
+        return {
+            panelId,
+            selectorId,
+        };
     },
 });
 </script>

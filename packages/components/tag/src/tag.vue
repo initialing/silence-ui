@@ -2,8 +2,11 @@
     <label class="si-tag" @mouseenter="mouseIn" @mouseleave="mouseOut"
         >{{ label
         }}<span
-            v-show="hover"
-            class="si-tag-close"
+            :class="[
+                'si-tag-close',
+                { 'si-tag-close-hide': !hover },
+                { 'si-tag-close-show': hover },
+            ]"
             @click.prevent="deleteTag"
         ></span
     ></label>
