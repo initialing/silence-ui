@@ -48,8 +48,11 @@
                     ></SiTag
                 ></template>
                 <template #options="optionProp"
-                    ><SiOption>{{ optionProp.item.name }}</SiOption></template
-                >
+                    ><SiOption
+                        :value="optionProp.item.key"
+                        :label="optionProp.item.name"
+                    ></SiOption
+                ></template>
             </SiFreeSelector>
         </div>
         <!-- <div style="margin-top: 20px">

@@ -1,0 +1,10 @@
+@import "../base/basic";
+@import "../base/color";
+
+.si-option {
+    @extend %si-basic-pointer;
+    margin: 0px;
+    padding-left: 16px;
+    height: 36px;
+    line-height: 36px;
+}

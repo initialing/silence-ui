@@ -11,12 +11,19 @@
             <input
                 class="si-freeselector-head__innerinput"
                 :placeholder="placeholder"
+                @focus="inputFocus"
+                @blur="inputBlur"
             />
         </div>
         <teleport to="body">
             <div
                 :id="`si-panel-${panelId}`"
-                class="si-freeselector-choosepanel"
+                :class="[
+                    'si-freeselector-choosepanel',
+                    `si-freeselector-choosepanel-${
+                        showPanel ? 'show' : 'hide'
+                    }`,
+                ]"
             >
                 <ul class="si-freeselector-choosepanel__list">
                     <li
@@ -64,6 +71,7 @@ export default defineComponent({
     setup() {
         const panelId: Ref<number> = ref(generateId());
         const selectorId: Ref<number> = ref(generateId());
+        const showPanel: Ref<boolean> = ref(false);
         onMounted(() => {
             const selector: HTMLElement = document.getElementById(
                 `si-freeselector-${selectorId.value}`
@@ -79,9 +87,18 @@ export default defineComponent({
             panel.style.top = selectorHeight + selectorY + 10 + "px";
             panel.style.left = selectorX + "px";
         });
+        const inputFocus = () => {
+            showPanel.value = true;
+        };
+        const inputBlur = () => {
+            showPanel.value = false;
+        };
         return {
             panelId,
             selectorId,
+            inputFocus,
+            inputBlur,
+            showPanel,
         };
     },
 });
