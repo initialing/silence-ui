@@ -13,6 +13,7 @@
                 :placeholder="placeholder"
                 @focus="inputFocus"
                 @blur="inputBlur"
+                @input="inputHadle"
             />
         </div>
         <teleport to="body">
@@ -40,9 +41,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+import {
+    defineComponent,
+    ref,
+    onMounted,
+    provide,
+    toRefs,
+    InputHTMLAttributes,
+} from "vue";
 import type { Ref } from "vue";
 import { generateId } from "@silence-ui/utils/common/generator";
+import type { ObjHasValueLabel } from "@silence-ui/utils/types/commonType";
 
 export default defineComponent({
     name: "SiFreeSelector",
@@ -67,12 +76,16 @@ export default defineComponent({
         "update:modelValue": (val: Array<unknown>) => {
             return true || val;
         },
+        selectorInput: (val: unknown) => {
+            return true || val;
+        },
     },
-    setup() {
+    setup(props, { emit }) {
+        const { modelValue } = toRefs(props);
         const panelId: Ref<number> = ref(generateId());
         const selectorId: Ref<number> = ref(generateId());
         const showPanel: Ref<boolean> = ref(false);
-        onMounted(() => {
+        const calcPanelPosition = () => {
             const selector: HTMLElement = document.getElementById(
                 `si-freeselector-${selectorId.value}`
             ) as HTMLElement;
@@ -86,19 +99,44 @@ export default defineComponent({
             panel.style.width = selectorWidth + "px";
             panel.style.top = selectorHeight + selectorY + 10 + "px";
             panel.style.left = selectorX + "px";
+        };
+        onMounted(() => {
+            calcPanelPosition();
         });
         const inputFocus = () => {
             showPanel.value = true;
+            calcPanelPosition();
         };
         const inputBlur = () => {
             showPanel.value = false;
         };
+
+        const updateFreeSelectorModel = (val) => {
+            emit("update:modelValue", val);
+        };
+        const deleteFreeSelectorTag = (val) => {
+            console.log("delete", val);
+            emit(
+                "update:modelValue",
+                (modelValue.value as Array<ObjHasValueLabel>).filter(
+                    (item) => item.value !== val
+                )
+            );
+        };
+
+        const inputHadle = (evt: Event) => {
+            emit("selectorInput", (evt.target as InputHTMLAttributes).value);
+        };
+        provide("selectorModel", modelValue);
+        provide("updateSelectorModel", updateFreeSelectorModel);
+        provide("deleteFreeSelectorTag", deleteFreeSelectorTag);
         return {
             panelId,
             selectorId,
             inputFocus,
             inputBlur,
             showPanel,
+            inputHadle,
         };
     },
 });

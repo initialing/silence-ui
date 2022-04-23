@@ -12,8 +12,9 @@
     ></label>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, inject } from "vue";
 import type { Ref } from "vue";
+import type { basicFunc } from "@silence-ui/utils/types/commonType";
 
 export default defineComponent({
     name: "SiTag",
@@ -31,6 +32,9 @@ export default defineComponent({
     },
     setup(props) {
         const hover: Ref<boolean> = ref(false);
+        const deleteFreeSelectorTag: basicFunc = inject(
+            "deleteFreeSelectorTag"
+        ) as basicFunc;
         const mouseIn = () => {
             hover.value = true;
         };
@@ -38,7 +42,7 @@ export default defineComponent({
             hover.value = false;
         };
         const deleteTag = () => {
-            console.log("delete", props.value);
+            deleteFreeSelectorTag(props.value);
         };
         return {
             hover,

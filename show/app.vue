@@ -40,11 +40,15 @@
         </div>
         <p>free selector</p>
         <div class="show">
-            <SiFreeSelector v-model="fsmodel" :selections="fsoptions">
+            <SiFreeSelector
+                v-model="fsmodel"
+                :selections="fsoptions"
+                @selectorInput="selectorInput"
+            >
                 <template #tags="tagProp"
                     ><SiTag
-                        :value="tagProp.item.key"
-                        :label="tagProp.item.name"
+                        :value="tagProp.item.value"
+                        :label="tagProp.item.label"
                     ></SiTag
                 ></template>
                 <template #options="optionProp"
@@ -85,13 +89,15 @@ let check: Ref<Array<unknown>> = ref(["1"]);
 let fsmodel: Ref<Array<unknown>> = ref([]);
 let fsoptions: Ref<Array<unknown>> = ref([]);
 fsmodel.value = [
-    { key: 1, name: "A" },
-    { key: 2, name: "B" },
+    { value: 1, label: "A" },
+    { value: 2, label: "B" },
 ];
-fsoptions.value = [
+let a = [
     { key: 1, name: "A" },
-    { key: 2, name: "B" },
     { key: 3, name: "C" },
+];
+let b = [
+    { key: 2, name: "B" },
     { key: 4, name: "D" },
 ];
 const btnClick = (num: number, evt: MouseEvent) => {
@@ -113,6 +119,13 @@ console.log("check", check);
 const clickCb = (val) => {
     console.log("clickCb", val);
     console.log("check", check.value);
+};
+const selectorInput = (val) => {
+    if (val == "a") {
+        fsoptions.value = a;
+    } else {
+        fsoptions.value = b;
+    }
 };
 watch(radioVal, (val) => {
     console.log("radio", val);
