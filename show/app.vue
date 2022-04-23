@@ -24,19 +24,42 @@
                 @input="inputInput"
             ></SiInput>
         </div>
+        <p>radio</p>
         <div class="show">
             <SiRadioGroup v-model="radioVal">
                 <SiRadio class="radio" label="1">choice 1</SiRadio>
                 <SiRadio class="radio" label="2">choice 2</SiRadio>
             </SiRadioGroup>
         </div>
+        <p>checkbox</p>
         <div class="show">
             <SiCheckboxGroup v-model="check" @click="clickCb">
                 <SiCheckbox class="radio" label="1">check 1</SiCheckbox>
                 <SiCheckbox class="radio" label="2">check 2</SiCheckbox>
             </SiCheckboxGroup>
         </div>
-        <div style="margin-top: 20px">
+        <p>free selector</p>
+        <div class="show">
+            <SiFreeSelector
+                v-model="fsmodel"
+                :selections="fsoptions"
+                @selectorInput="selectorInput"
+            >
+                <template #tags="tagProp"
+                    ><SiTag
+                        :value="tagProp.item.value"
+                        :label="tagProp.item.label"
+                    ></SiTag
+                ></template>
+                <template #options="optionProp"
+                    ><SiOption
+                        :value="optionProp.item.key"
+                        :label="optionProp.item.name"
+                    ></SiOption
+                ></template>
+            </SiFreeSelector>
+        </div>
+        <!-- <div style="margin-top: 20px">
             <SiCarousel>
                 <SiCarouselItem
                     ><div class="carousel" style="background-color: aqua"></div
@@ -51,7 +74,7 @@
                     ><div class="carousel" style="background-color: brown"></div
                 ></SiCarouselItem>
             </SiCarousel>
-        </div>
+        </div> -->
     </article>
 </template>
 
@@ -63,6 +86,20 @@ let radioVal: Ref<string> = ref("1");
 let check1: Ref<boolean> = ref(false);
 let check2: Ref<boolean> = ref(false);
 let check: Ref<Array<unknown>> = ref(["1"]);
+let fsmodel: Ref<Array<unknown>> = ref([]);
+let fsoptions: Ref<Array<unknown>> = ref([]);
+fsmodel.value = [
+    { value: 1, label: "A" },
+    { value: 2, label: "B" },
+];
+let a = [
+    { key: 1, name: "A" },
+    { key: 3, name: "C" },
+];
+let b = [
+    { key: 2, name: "B" },
+    { key: 4, name: "D" },
+];
 const btnClick = (num: number, evt: MouseEvent) => {
     console.log("click ==>", evt.currentTarget);
 };
@@ -82,6 +119,13 @@ console.log("check", check);
 const clickCb = (val) => {
     console.log("clickCb", val);
     console.log("check", check.value);
+};
+const selectorInput = (val) => {
+    if (val == "a") {
+        fsoptions.value = a;
+    } else {
+        fsoptions.value = b;
+    }
 };
 watch(radioVal, (val) => {
     console.log("radio", val);
@@ -106,6 +150,7 @@ body {
 .show {
     width: 100%;
     display: flex;
+    padding-left: 30px;
 }
 .si-btn {
     margin-right: 10px;

@@ -1,0 +1,20 @@
+@import "../base/basic";
+@import "../base/color";
+
+.si-option {
+    @extend %si-basic-pointer;
+    margin: 0px;
+    padding-left: 16px;
+    height: 36px;
+    line-height: 36px;
+    transition: background-color ease .15s;
+    &-normal {
+        &:hover {
+            background-color: rgba($color: $si_shadow, $alpha: .15);
+        }
+    }
+    &-active {
+        color: $si_active_color;
+        background-color: rgba($color: $si_active_color, $alpha: .15);
+    }
+}

@@ -6,9 +6,12 @@ import {
     SiCarouselItem,
     SiCheckbox,
     SiCheckboxGroup,
+    SiFreeSelector,
     SiInput,
+    SiOption,
     SiRadio,
     SiRadioGroup,
+    SiTag,
 } from "@silence-ui/components";
 
 import "@silence-ui/style/src/index.scss";
@@ -19,7 +22,10 @@ app.use(SiCarousel);
 app.use(SiCarouselItem);
 app.use(SiCheckbox);
 app.use(SiCheckboxGroup);
+app.use(SiFreeSelector);
 app.use(SiInput);
+app.use(SiOption);
 app.use(SiRadio);
 app.use(SiRadioGroup);
+app.use(SiTag);
 app.mount("#sishow");

@@ -1,0 +1,54 @@
+@import "../base/basic";
+@import "../base/color";
+
+.si-freeselector{
+    width: 280px;
+    position: relative;
+    &-head {
+        @extend %si-border-basic;
+        @extend %si-border;
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 8px;
+        width: 100%;
+        min-height: 44px;
+        box-sizing: border-box;
+        padding: 3px 8px 3px 8px;
+        &__tag {
+            margin: 3px 4px;
+            height: 28px;
+        }
+        &__innerinput {
+            height: 28px;
+            width: 80px;
+            outline: none;
+            margin: 3px 4px;
+            box-sizing: border-box;
+            border: none;
+        }
+    }
+    &-choosepanel {
+        @extend %si-box-shadow;
+        position: absolute;
+        border-radius: 4px;
+        transition: height ease .3s;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scrollbar-width: none;
+        &__list {
+            list-style: none;
+            width: 100%;
+            margin: 0px;
+            padding: 8px 0px 8px 0px;
+        }
+        &__item {
+            width: 100%;
+        }
+        &-show {
+            height: 170px;
+        }
+        &-hide {
+            height: 0px;
+        }
+    }
+}
