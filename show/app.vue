@@ -59,6 +59,10 @@
                 ></template>
             </SiFreeSelector>
         </div>
+        <p>date picker</p>
+        <div class="show">
+            <SiDatePicker></SiDatePicker>
+        </div>
         <!-- <div style="margin-top: 20px">
             <SiCarousel>
                 <SiCarouselItem

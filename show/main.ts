@@ -6,6 +6,7 @@ import {
     SiCarouselItem,
     SiCheckbox,
     SiCheckboxGroup,
+    SiDatePicker,
     SiFreeSelector,
     SiInput,
     SiOption,
@@ -22,6 +23,7 @@ app.use(SiCarousel);
 app.use(SiCarouselItem);
 app.use(SiCheckbox);
 app.use(SiCheckboxGroup);
+app.use(SiDatePicker);
 app.use(SiFreeSelector);
 app.use(SiInput);
 app.use(SiOption);
