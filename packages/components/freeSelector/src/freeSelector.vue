@@ -51,6 +51,7 @@ import {
 } from "vue";
 import type { Ref } from "vue";
 import { generateId } from "@silence-ui/utils/common/generator";
+import { calcPanelPosition } from "@silence-ui/utils/common/setPosition";
 import type { ObjHasValueLabel } from "@silence-ui/utils/types/commonType";
 
 export default defineComponent({
@@ -85,27 +86,18 @@ export default defineComponent({
         const panelId: Ref<number> = ref(generateId());
         const selectorId: Ref<number> = ref(generateId());
         const showPanel: Ref<boolean> = ref(false);
-        const calcPanelPosition = () => {
-            const selector: HTMLElement = document.getElementById(
-                `si-freeselector-${selectorId.value}`
-            ) as HTMLElement;
-            const panel: HTMLElement = document.getElementById(
-                `si-panel-${panelId.value}`
-            ) as HTMLElement;
-            const selectorWidth = selector.clientWidth;
-            const selectorHeight = selector.clientHeight;
-            const selectorX = selector.offsetLeft;
-            const selectorY = selector.offsetTop;
-            panel.style.width = selectorWidth + "px";
-            panel.style.top = selectorHeight + selectorY + 10 + "px";
-            panel.style.left = selectorX + "px";
-        };
         onMounted(() => {
-            calcPanelPosition();
+            calcPanelPosition(
+                `si-freeselector-${selectorId.value}`,
+                `si-panel-${panelId.value}`
+            );
         });
         const inputFocus = () => {
             showPanel.value = true;
-            calcPanelPosition();
+            calcPanelPosition(
+                `si-freeselector-${selectorId.value}`,
+                `si-panel-${panelId.value}`
+            );
         };
         const inputBlur = () => {
             showPanel.value = false;
