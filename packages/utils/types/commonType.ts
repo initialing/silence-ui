@@ -10,5 +10,7 @@ export type dayCell = {
     presentMonth: boolean;
     preMonth: boolean;
     nextMonth: boolean;
-    day: string;
+    day: string | number;
+    date: Date;
+    active: boolean;
 };
