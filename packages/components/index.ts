@@ -1,6 +1,7 @@
 export * from "./button";
 export * from "./carousel";
 export * from "./checkbox";
+export * from "./datePicker";
 export * from "./freeSelector";
 export * from "./input";
 export * from "./option";

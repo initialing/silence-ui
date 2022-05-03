@@ -59,6 +59,13 @@
                 ></template>
             </SiFreeSelector>
         </div>
+        <p>date picker</p>
+        <div class="show">
+            <SiDatePicker
+                v-model="date"
+                @change="datePickerChange"
+            ></SiDatePicker>
+        </div>
         <!-- <div style="margin-top: 20px">
             <SiCarousel>
                 <SiCarouselItem
@@ -88,6 +95,7 @@ let check2: Ref<boolean> = ref(false);
 let check: Ref<Array<unknown>> = ref(["1"]);
 let fsmodel: Ref<Array<unknown>> = ref([]);
 let fsoptions: Ref<Array<unknown>> = ref([]);
+let date: Ref<string | number | Date> = ref("2022-5-1");
 fsmodel.value = [
     { value: 1, label: "A" },
     { value: 2, label: "B" },
@@ -126,6 +134,9 @@ const selectorInput = (val) => {
     } else {
         fsoptions.value = b;
     }
+};
+const datePickerChange = (val) => {
+    console.log(val);
 };
 watch(radioVal, (val) => {
     console.log("radio", val);

@@ -1,5 +1,6 @@
 @import "../base/basic";
 @import "../base/color";
+@import "../base/panel";
 
 .si-freeselector{
     width: 280px;
@@ -28,13 +29,7 @@
         }
     }
     &-choosepanel {
-        @extend %si-box-shadow;
-        position: absolute;
-        border-radius: 4px;
-        transition: height ease .3s;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        scrollbar-width: none;
+        @extend %si-panel-basic;
         &__list {
             list-style: none;
             width: 100%;

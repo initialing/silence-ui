@@ -5,6 +5,7 @@ declare module "vue" {
         SiCarouselItem: typeof import("@silence-ui/components")["SiCarouselItem"];
         SiCheckbox: typeof import("@silence-ui/components")["SiCheckbox"];
         SiCheckboxGroup: typeof import("@silence-ui/components")["SiCheckboxGroup"];
+        SiDatePicker: typeof import("@silence-ui/components")["SiDatePicker"];
         SiFreeSelector: typeof import("@silence-ui/components")["SiFreeSelector"];
         SiInput: typeof import("@silence-ui/components")["SiInput"];
         SiOption: typeof import("@silence-ui/components")["SiOption"];

@@ -50,3 +50,12 @@
 %si-box-shadow {
     box-shadow: 0px 0px 8px $si_shadow;
 }
+
+%si-flex {
+    display: flex;
+}
+
+%si-flex-center {
+    @extend %si-flex;
+    align-items: center;
+}
