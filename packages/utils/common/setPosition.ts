@@ -1,3 +1,5 @@
+import { generateZIndex } from "./generator";
+
 export function calcPanelPosition(
     inputId: string,
     panelId: string,
@@ -14,4 +16,5 @@ export function calcPanelPosition(
     panel.style.width = width ? width + "px" : selectorWidth + "px";
     panel.style.top = selectorHeight + selectorY + 10 + "px";
     panel.style.left = selectorX + "px";
+    panel.style.zIndex = generateZIndex() + "";
 }
