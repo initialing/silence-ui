@@ -10,6 +10,7 @@ import {
     SiFreeSelector,
     SiInput,
     SiOption,
+    SiPagination,
     SiRadio,
     SiRadioGroup,
     SiTag,
@@ -27,6 +28,7 @@ app.use(SiDatePicker);
 app.use(SiFreeSelector);
 app.use(SiInput);
 app.use(SiOption);
+app.use(SiPagination);
 app.use(SiRadio);
 app.use(SiRadioGroup);
 app.use(SiTag);

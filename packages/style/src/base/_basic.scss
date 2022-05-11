@@ -13,6 +13,7 @@
 }
 
 %si-border-basic {
+    @extend %si-border;
     border-width: 1px;
     border-style: solid;
 }
