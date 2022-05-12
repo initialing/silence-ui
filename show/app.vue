@@ -105,7 +105,7 @@ let fsmodel: Ref<Array<unknown>> = ref([]);
 let fsoptions: Ref<Array<unknown>> = ref([]);
 let date: Ref<string | number | Date> = ref("2022-5-1");
 let currentPage: Ref<number> = ref(1);
-let totalCount: Ref<number> = ref(34);
+let totalCount: Ref<number> = ref(94);
 let pageSize: Ref<number> = ref(10);
 fsmodel.value = [
     { value: 1, label: "A" },
