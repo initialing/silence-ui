@@ -1,0 +1,86 @@
+@import "../base/basic";
+@import "../base/color";
+
+%page-btn-basic {
+    @extend %si-border-basic;
+    border-radius: 4px;
+    background-color: $si_bg_color;
+    transition: border-color ease .15s, color ease .15s;
+    height: 32px;
+    line-height: 1;
+    text-align: center;
+}
+%page-btn-active {
+    &:hover {
+        @extend %si-basic-pointer;
+    }
+    &:active {
+        @extend %si-active-border;
+        color: $si_active_color;
+    }
+}
+
+.si-pagination {
+    @extend %si-basic-font;
+    float: left;
+    height: 32px;
+    &-pre__btn, &-next__btn {
+        @extend %page-btn-basic;
+        width: 58px;
+    }
+    &-pre__btn {
+        margin-right: 8px;
+    }
+    &-next__btn {
+        margin-left: 8px;
+    }
+    &-pre, &-pages, &-next {
+        display: inline-block;
+        &__disable, &__disable:hover, &__disable:active {
+            @extend %si-basic-disabled;
+            opacity: .7;
+        }
+        &__active {
+            @extend %page-btn-active;
+        }
+    }
+    &-pagebtn {
+        @extend %page-btn-basic;
+        &:hover {
+            @extend %si-active-border;
+            @extend %si-basic-pointer;
+            color: $si_active_color;
+        }
+        min-width: 32px;
+        margin: 0px 8px 0px 8px
+    }
+    &-selected {
+        color: $si_bg_color;
+        background-color: $si_active_color;
+        border-color: $si_active_color;
+        &:hover {
+            color: $si_bg_color;
+        }
+    }
+    &-pagepre, &-pagenext {
+        &::after {
+            content: '···';
+        }
+    }
+    &-pagepre {
+        &:hover {
+            &::after {
+                font-size: 12px;
+                content: '<<';
+            }
+        }
+    }
+    &-pagenext {
+        &:hover {
+            &::after {
+                font-size: 12px;
+                content: '>>';
+            }
+        }
+    }
+}

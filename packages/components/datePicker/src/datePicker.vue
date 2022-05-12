@@ -88,7 +88,7 @@
                                                 ]"
                                                 @click.prevent="selectDate(day)"
                                             >
-                                                <sapn>{{ day.day }}</sapn>
+                                                <span>{{ day.day }}</span>
                                             </div>
                                         </td>
                                     </tr>

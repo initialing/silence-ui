@@ -9,6 +9,7 @@ declare module "vue" {
         SiFreeSelector: typeof import("@silence-ui/components")["SiFreeSelector"];
         SiInput: typeof import("@silence-ui/components")["SiInput"];
         SiOption: typeof import("@silence-ui/components")["SiOption"];
+        SiPagination: typeof import("@silence-ui/components")["SiPagination"];
         SiRadio: typeof import("@silence-ui/components")["SiRadio"];
         SiRadioGroup: typeof import("@silence-ui/components")["SiRadioGroup"];
         SiTag: typeof import("@silence-ui/components")["SiTag"];

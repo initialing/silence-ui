@@ -14,3 +14,9 @@ export type dayCell = {
     date: Date;
     active: boolean;
 };
+
+export type pageItem = {
+    val: number;
+    isEllipsis: boolean;
+    ellipsisType: "pre" | "next" | null;
+};
