@@ -98,7 +98,7 @@ export default defineComponent({
             let i = 1;
             let page = 1;
             if (max <= 7) {
-                while (i <= 7) {
+                while (i <= max) {
                     pageItems.value.push({
                         isEllipsis: false,
                         val: page,
@@ -153,7 +153,13 @@ export default defineComponent({
 
             emit("update:modelValue", nowPage);
         };
-        watch(modelValue, (newVal) => {
+        watch(modelValue, () => {
+            setPageItems();
+        });
+        watch(total, () => {
+            setPageItems();
+        });
+        watch(pageSize, () => {
             setPageItems();
         });
         const emitChange = (val: number) => {
