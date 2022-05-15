@@ -43,7 +43,7 @@
             <SiFreeSelector
                 v-model="fsmodel"
                 :selections="fsoptions"
-                @selectorInput="selectorInput"
+                @selector-input="selectorInput"
             >
                 <template #tags="tagProp"
                     ><SiTag
@@ -52,10 +52,10 @@
                     ></SiTag
                 ></template>
                 <template #options="optionProp"
-                    ><SiOption
+                    ><si-option
                         :value="optionProp.item.key"
                         :label="optionProp.item.name"
-                    ></SiOption
+                    ></si-option
                 ></template>
             </SiFreeSelector>
         </div>
@@ -94,7 +94,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, Ref, ref, watch, toRefs } from "vue";
+import { onMounted, Ref, ref, watch } from "vue";
 let btname: Ref<string> = ref("");
 let inputVal: Ref<string> = ref("");
 let radioVal: Ref<string> = ref("1");
@@ -105,7 +105,7 @@ let fsmodel: Ref<Array<unknown>> = ref([]);
 let fsoptions: Ref<Array<unknown>> = ref([]);
 let date: Ref<string | number | Date> = ref("2022-5-1");
 let currentPage: Ref<number> = ref(1);
-let totalCount: Ref<number> = ref(94);
+let totalCount: Ref<number> = ref(4);
 let pageSize: Ref<number> = ref(10);
 fsmodel.value = [
     { value: 1, label: "A" },
