@@ -195,7 +195,9 @@ export default defineComponent({
             }
             let dateDay = date.getDay();
             let dateDate = date.getDate();
-            resArray[(dateDate / 7) | 0][dateDay] = {
+            let beginDateDay = new Date(`${fullYear}-${month}-${1}`).getDate();
+            let currWeekNo = ((dateDate + 6 - beginDateDay) / 7) | 0;
+            resArray[currWeekNo][dateDay] = {
                 today: false,
                 presentMonth: true,
                 preMonth: false,
@@ -204,15 +206,11 @@ export default defineComponent({
                 date: date,
                 active: false,
             };
-            setTodyAndActive(resArray[(dateDate / 7) | 0][dateDay], activeDay);
+            setTodyAndActive(resArray[currWeekNo][dateDay], activeDay);
             for (let i = 0; i < 6; i++) {
                 for (let j = 0; j < 7; j++) {
-                    if (
-                        i * 7 + j + 1 <
-                        ((dateDate / 7) | 0) * 7 + dateDay + 1
-                    ) {
-                        let dValue =
-                            ((dateDate / 7) | 0) * 7 + dateDay - i * 7 - j;
+                    if (i * 7 + j + 1 < currWeekNo * 7 + dateDay + 1) {
+                        let dValue = currWeekNo * 7 + dateDay - i * 7 - j;
                         let tempDate = new Date(dateTime - dValue * aDayTime);
                         if (
                             tempDate.getFullYear() < fullYear ||
@@ -238,12 +236,8 @@ export default defineComponent({
                                 active: false,
                             };
                         }
-                    } else if (
-                        i * 7 + j + 1 >
-                        ((dateDate / 7) | 0) * 7 + dateDay + 1
-                    ) {
-                        let dValue =
-                            i * 7 + j - ((dateDate / 7) | 0) * 7 - dateDay;
+                    } else if (i * 7 + j + 1 > currWeekNo * 7 + dateDay + 1) {
+                        let dValue = i * 7 + j - currWeekNo * 7 - dateDay;
                         let tempDate = new Date(dateTime + dValue * aDayTime);
                         if (
                             tempDate.getFullYear() > fullYear ||

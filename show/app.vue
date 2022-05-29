@@ -2,19 +2,19 @@
     <article>
         <p>button</p>
         <div class="show">
-            <SiButton type="button" @click="btnClick(2, $event)">{{
+            <si-button type="button" @click="btnClick(2, $event)">{{
                 btname
-            }}</SiButton>
-            <SiButton
+            }}</si-button>
+            <si-button
                 theme="danger"
                 :disabled="true"
                 @click="btnClick(2, $event)"
-                >danger</SiButton
+                >danger</si-button
             >
         </div>
         <p>input</p>
         <div class="show">
-            <SiInput
+            <si-input
                 v-model="inputVal"
                 type="text"
                 :disabled="true"
@@ -22,34 +22,34 @@
                 @blur="inputBlur"
                 @change="inputChange"
                 @input="inputInput"
-            ></SiInput>
+            ></si-input>
         </div>
         <p>radio</p>
         <div class="show">
-            <SiRadioGroup v-model="radioVal">
-                <SiRadio class="radio" label="1">choice 1</SiRadio>
-                <SiRadio class="radio" label="2">choice 2</SiRadio>
-            </SiRadioGroup>
+            <si-radio-group v-model="radioVal">
+                <si-radio class="radio" label="1">choice 1</si-radio>
+                <si-radio class="radio" label="2">choice 2</si-radio>
+            </si-radio-group>
         </div>
         <p>checkbox</p>
         <div class="show">
-            <SiCheckboxGroup v-model="check" @click="clickCb">
-                <SiCheckbox class="radio" label="1">check 1</SiCheckbox>
-                <SiCheckbox class="radio" label="2">check 2</SiCheckbox>
-            </SiCheckboxGroup>
+            <si-checkbox-group v-model="check" @click="clickCb">
+                <si-checkbox class="radio" label="1">check 1</si-checkbox>
+                <si-checkbox class="radio" label="2">check 2</si-checkbox>
+            </si-checkbox-group>
         </div>
         <p>free selector</p>
         <div class="show">
-            <SiFreeSelector
+            <si-free-selector
                 v-model="fsmodel"
                 :selections="fsoptions"
                 @selector-input="selectorInput"
             >
                 <template #tags="tagProp"
-                    ><SiTag
+                    ><si-tag
                         :value="tagProp.item.value"
                         :label="tagProp.item.label"
-                    ></SiTag
+                    ></si-tag
                 ></template>
                 <template #options="optionProp"
                     ><si-option
@@ -57,22 +57,22 @@
                         :label="optionProp.item.name"
                     ></si-option
                 ></template>
-            </SiFreeSelector>
+            </si-free-selector>
         </div>
         <p>date picker</p>
         <div class="show">
-            <SiDatePicker
+            <si-date-picker
                 v-model="date"
                 @change="datePickerChange"
-            ></SiDatePicker>
+            ></si-date-picker>
         </div>
         <p>pagination</p>
         <div class="show">
-            <SiPagination
+            <si-pagination
                 v-model="currentPage"
                 :page-size="pageSize"
                 :total="totalCount"
-            ></SiPagination>
+            ></si-pagination>
         </div>
         <!-- <div style="margin-top: 20px">
             <SiCarousel>
@@ -105,7 +105,7 @@ let fsmodel: Ref<Array<unknown>> = ref([]);
 let fsoptions: Ref<Array<unknown>> = ref([]);
 let date: Ref<string | number | Date> = ref("2022-5-1");
 let currentPage: Ref<number> = ref(1);
-let totalCount: Ref<number> = ref(4);
+let totalCount: Ref<number> = ref(10);
 let pageSize: Ref<number> = ref(10);
 fsmodel.value = [
     { value: 1, label: "A" },
