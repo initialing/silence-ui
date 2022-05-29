@@ -92,7 +92,8 @@ export default defineComponent({
         const setPageItems = () => {
             pageItems.value = [];
             let nowPage: number = modelValue.value;
-            let max: number = ((total.value / pageSize.value) | 0) + 1;
+            let max: number = (total.value / pageSize.value) | 0;
+            if (total.value % pageSize.value !== 0) max++;
             if (nowPage < 1) nowPage = 1;
             if (nowPage > max) nowPage = max;
             let i = 1;
